@@ -41,11 +41,11 @@ class ProjectsController extends Controller
     {
       $project = $this->validateProject();
       $project['owner_id'] = auth()->id();
-      dd($project);
-      Project::create($project);
+      $newProject = Project::create($project);
+
 
       return redirect()->action(
-        'ProjectsController@show', ['id'=> $project->id ]
+        'ProjectsController@show', ['id'=> $newProject->id ]
       );
     }
 
