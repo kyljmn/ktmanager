@@ -14,4 +14,9 @@ class Task extends Model
       return $this->belongsTo('App\Project');
     }
 
+    public function notes()
+    {
+      return $this->morphMany('App\Note', 'noteable');
+    }
+
 }

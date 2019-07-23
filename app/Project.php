@@ -17,4 +17,10 @@ class Project extends Model
   {
     return $this->hasMany('App\Task');
   }
+
+  public function notes()
+  {
+    return $this->morphMany('App\Note', 'noteable');
+  }
+  
 }

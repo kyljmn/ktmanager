@@ -10,4 +10,10 @@ class Note extends Model
     [
       'model_id', 'description', 'model_type',
     ];
+
+    public function noteable()
+    {
+      return $this->morphTo();
+    }
+
 }
