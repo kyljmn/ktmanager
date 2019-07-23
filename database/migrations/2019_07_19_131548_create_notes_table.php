@@ -16,7 +16,6 @@ class CreateNotesTable extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('description');
-            $table->bigInteger('author_id')->unsigned();
             $table->bigInteger('noteable_id')->unsigned();
             $table->string('noteable_type');
             $table->timestamps();
