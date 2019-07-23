@@ -33,9 +33,9 @@
         @csrf
         <button type="submit" name="button">Delete Task</button>
       </form>
-      <form class="" action="/projects/{{ $project->id }}/tasks/{{ $task->id }}/edit" method="GET">
+      <form class="" action="/projects/{{ $project->id }}/task/{{ $task->id }}/edit" method="GET">
         @csrf
-        <button type="submit" name="button">Delete Task</button>
+        <button type="submit" name="button">Edit Task</button>
       </form>
     @endforeach
   </div>

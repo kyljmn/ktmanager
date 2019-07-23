@@ -15,6 +15,6 @@
   </div>
   <br><br>
   <div>
-    <button type="submit" name="button">Edit project</button>
+    <button type="submit" name="button">Update Project</button>
   </div>
 </form>

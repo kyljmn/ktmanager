@@ -72,7 +72,7 @@ class ProjectTasksController extends Controller
      */
     public function edit(Project $project, Task $task)
     {
-
+      return view('tasks.edit', ['task' => $task, 'project' => $project]);
     }
 
     /**
@@ -85,8 +85,10 @@ class ProjectTasksController extends Controller
      */
     public function update(Request $request, Project $project, Task $task)
     {
-        // dd($task);
-
+        $task->update($this->validateTask());
+        return redirect()->action(
+            'ProjectsController@show', ['id'=> $project->id]
+          );
     }
 
     /**
