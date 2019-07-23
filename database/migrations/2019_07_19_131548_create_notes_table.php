@@ -17,7 +17,7 @@ class CreateNotesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('model_id')->unsigned();
             $table->text('description');
-            $table->enum('level', ['project', 'task']);
+            $table->enum('type', ['project', 'task']);
             $table->timestamps();
         });
     }
