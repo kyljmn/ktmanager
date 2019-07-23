@@ -21,6 +21,8 @@ Route::resource('projects', 'ProjectsController');
 
 Route::resource('projects.task', 'ProjectTasksController', ['except'=> ['index']]);
 
+Route::resource('notes', 'NotesController', ['only' => ['store', 'update', 'delete']]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
