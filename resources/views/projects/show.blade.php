@@ -16,7 +16,16 @@
 <div>
 <div class="">
   <div class="">
+    <form class="" action="/projects/{{ $project->id }}/task/create" method="GET">
+      @csrf
+      <button type="submit" name="button">Add Task</button>
+    </form>
+
+  </div>
+  <div class="">
+    <ul>
     @foreach ($project->tasks as $task)
+    <li>
       <p>{{ $task->description }}</p>
       <p>{{ $task->deadline }}</p>
       <form class="" action="/tasks/{{ $task->id }}" method="post">
@@ -37,13 +46,9 @@
         @csrf
         <button type="submit" name="button">Edit Task</button>
       </form>
+    </li>
     @endforeach
+  </ul>
   </div>
-  <div class="">
-    <form class="" action="/projects/{{ $project->id }}/task/create" method="GET">
-      @csrf
-      <button type="submit" name="button">Add Task</button>
-    </form>
 
-  </div>
 </div>

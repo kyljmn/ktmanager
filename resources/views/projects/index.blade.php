@@ -7,3 +7,10 @@
     </li>
   @endforeach
 </ul>
+<div class="">
+  <form class="" action="/projects/create" method="GET">
+    @csrf
+    <button type="submit" name="button">Create New Project</button>
+  </form>
+
+</div>
