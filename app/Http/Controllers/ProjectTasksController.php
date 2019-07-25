@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use App\Project;
+use App\Note;
 use Illuminate\Http\Request;
 
 class ProjectTasksController extends Controller
@@ -100,7 +101,9 @@ class ProjectTasksController extends Controller
      */
     public function destroy(Project $project, Task $task)
     {
-        $task->notes->delete();
+        foreach ($task->notes as $note){
+          $note->delete();
+        }
         $task->delete();
         return redirect()->action(
             'ProjectsController@show', ['id'=> $project->id]

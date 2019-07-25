@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Task;
+use App\Note;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -94,6 +96,15 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
+        foreach ($project->tasks as $task){
+          foreach ($task->notes as $note){
+            $note->delete();
+          }
+          $task->delete();
+        }
+        foreach ($project->notes as $note){
+          $note->delete();
+        }
         $project->delete();
         return redirect('/projects');
     }
