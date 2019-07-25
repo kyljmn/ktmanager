@@ -13,9 +13,23 @@
       <button type="submit">Delete Project</button>
     </form>
   </div>
-<div>
+  <div class="">
+    <h2>Notes</h2>
+    <ul>
+      @foreach ($project->notes as $note)
+        <li>{{ $note->description }}</li>
+      @endforeach
+    </ul>
+    <form class="" action="/projects/{{ $project->id }}/notes" method="POST">
+      @csrf
+      <textarea name="description" rows="3" cols="80" placeholder="Add notes here"></textarea>
+      <button type="submit">Save Note</button>
+    </form>
+  </div>
+</div>
 <div class="">
   <div class="">
+    <h2>Tasks</h2>
     <form class="" action="/projects/{{ $project->id }}/task/create" method="GET">
       @csrf
       <button type="submit" name="button">Add Task</button>
@@ -37,7 +51,7 @@
           <input type="radio" name="status" value="done" onChange="this.form.submit()" {{ $task->status == 'done' ? 'checked' : ''}} > Done
         </label>
       </form>
-      <form class="" action="/projects/{{ $project->id }}/tasks/{{ $task->id }}" method="POST">
+      <form class="" action="/projects/{{ $project->id }}/task/{{ $task->id }}" method="POST">
         @method("DELETE")
         @csrf
         <button type="submit" name="button">Delete Task</button>
@@ -46,6 +60,18 @@
         @csrf
         <button type="submit" name="button">Edit Task</button>
       </form>
+      <div class="">
+        <ul>
+          @foreach ($task->notes as $note)
+            <li>{{ $note->description }}</li>
+          @endforeach
+        </ul>
+        <form class="" action="/tasks/{{ $task->id }}/notes" method="POST">
+          @csrf
+          <textarea name="description" rows="3" cols="80" placeholder="Add notes here"></textarea>
+          <button type="submit">Save Note</button>
+        </form>
+      </div>
     </li>
     @endforeach
   </ul>

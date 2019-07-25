@@ -21,7 +21,9 @@ Route::resource('projects', 'ProjectsController');
 
 Route::resource('projects.task', 'ProjectTasksController', ['except'=> ['index']]);
 
-Route::resource('notes', 'NotesController', ['only' => ['store', 'update', 'delete']]);
+Route::post('/projects/{project}/notes', 'NotesController@fromprojects');
+
+Route::post('/tasks/{task}/notes', 'NotesController@fromtasks');
 
 Auth::routes();
 

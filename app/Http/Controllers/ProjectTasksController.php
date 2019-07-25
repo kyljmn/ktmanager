@@ -100,6 +100,7 @@ class ProjectTasksController extends Controller
      */
     public function destroy(Project $project, Task $task)
     {
+        $task->notes->delete();
         $task->delete();
         return redirect()->action(
             'ProjectsController@show', ['id'=> $project->id]
