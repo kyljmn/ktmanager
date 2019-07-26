@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\Task;
 use App\Note;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
     public function __construct() {
       $this->middleware('auth');
+      $this->middleware('can:update,project', ['except' => ['index','create','store']]);
     }
     /**
      * Display a listing of the resource.
