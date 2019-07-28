@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->bigInteger('project_id')->unsigned();
             $table->string('description');
             $table->enum('status', ['todo', 'doing','done'])->default('todo');
-            $table->timestamp('deadline');
+            $table->dateTime('deadline');
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
