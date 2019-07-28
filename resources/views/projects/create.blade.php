@@ -1,3 +1,10 @@
+@extends('master')
+
+@section('title')
+  - Create Project
+@endsection
+
+@section('content')
 <form action="/projects" method="POST">
   @csrf
   <div>
@@ -17,3 +24,4 @@
     <button type="submit" name="button">Save project</button>
   </div>
 </form>
+@endsection

@@ -1,3 +1,10 @@
+@extends('master')
+
+@section('title')
+  - Projects
+@endsection
+
+@section('content')
 <form action="/projects/{{ $project->id }}" method="POST">
   @method('PATCH')
   @csrf
@@ -18,3 +25,4 @@
     <button type="submit" name="button">Update Project</button>
   </div>
 </form>
+@endsection

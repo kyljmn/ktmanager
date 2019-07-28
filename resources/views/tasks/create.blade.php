@@ -1,3 +1,10 @@
+@extends('master')
+
+@section('title')
+  - Create Tasks
+@endsection
+
+@section('content')
 <form class="" action="/projects/{{ $project->id }}/task" method="post">
   @csrf
   <div>
@@ -11,3 +18,4 @@
   <button type="submit" name="button">Save Task</button>
 
 </form>
+@endsection
