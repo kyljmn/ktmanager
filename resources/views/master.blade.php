@@ -8,7 +8,7 @@
     <script src="{{ asset('js/semantic.min.js') }}"></script>
   </head>
   <body>
-    <div class="ui secondary  menu">
+    <div class="ui primary  menu">
             <a class="item" href="{{ url('/') }}">
                 toDone
             </a>
@@ -25,11 +25,11 @@
                     <!-- Authentication Links -->
                     @guest
 
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="item" href="{{ route('login') }}">{{ __('Login') }}</a>
 
                         @if (Route::has('register'))
 
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="item" href="{{ route('register') }}">{{ __('Register') }}</a>
 
                         @endif
                     @else
@@ -53,6 +53,7 @@
             </div>
             <script type="text/javascript">
             $('.ui.accordion').accordion();
+            $('.ui.dropdown').dropdown();
             </script>
   </body>
 </html>

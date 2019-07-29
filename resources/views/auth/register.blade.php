@@ -1,7 +1,38 @@
-@extends('layouts.app')
+@extends('master')
 
 @section('content')
-<div class="container">
+
+<div class="ui one column center aligned stackable page grid">
+   <div class="column eight wide">
+         <div class="ui center aligned header">
+           Register
+         </div>
+         <div class="ui clearing divider"></div>
+         <form class="ui form" method="POST" action="{{ route('register') }}">
+             @csrf
+             <div class="field">
+               <label>Name</label>
+               <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+             </div>
+             <div class="field">
+               <label>{{ __('E-Mail Address') }}</label>
+               <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+             </div>
+             <div class="field">
+               <label>{{ __('Password') }}</label>
+               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+             </div>
+             <div class="field">
+               <label>{{ __('Confirm Password') }}</label>
+               <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+             </div>
+             <button type="submit" class="fluid ui blue button">
+                 {{ __('Register') }}
+             </button>
+           </form>
+  </div>
+</div>
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +104,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection

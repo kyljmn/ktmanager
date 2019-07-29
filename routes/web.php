@@ -17,14 +17,12 @@ Route::get('/', function () {
 
 Route::patch('/tasks/{task}', 'ProjectTasksController@statusChange');
 
-Route::resource('projects', 'ProjectsController');
+Route::resource('projects', 'ProjectsController', ['except'=> ['create']]);
 
-Route::resource('projects.task', 'ProjectTasksController', ['except'=> ['index']]);
+Route::resource('projects.task', 'ProjectTasksController', ['except'=> ['index','create']]);
 
 Route::post('/projects/{project}/notes', 'NotesController@fromprojects');
 
 Route::post('/tasks/{task}/notes', 'NotesController@fromtasks');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
