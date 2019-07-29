@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>toDone @yield('title')</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
-
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/semantic.min.js') }}"></script>
   </head>
   <body>
     <div class="ui secondary  menu">
@@ -50,6 +51,8 @@
             <div class="ui main container">
               @yield('content')
             </div>
-    <script src="{{ asset('js/semantic.min.js') }}"></script>
+            <script type="text/javascript">
+            $('.ui.accordion').accordion();
+            </script>
   </body>
 </html>

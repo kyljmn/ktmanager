@@ -17,7 +17,33 @@
     <button class="tiny ui red button" type="submit">Delete Project</button>
 </form>
 
-<div class="ui medium header">
+<div class="ui accordion">
+  <div class=" title">
+    <div class="ui medium header">
+      <i class="dropdown icon"></i>
+      Notes
+    </div>
+  </div>
+  <div class=" content">
+    <div class="ui relaxed divided list">
+      @foreach ($project->notes as $note)
+        <div class="item">
+          <div class="description">
+            {{ $note->description }}
+          </div>
+        </div>
+      @endforeach
+      <form class="ui form" action="/projects/{{ $project->id }}/notes" method="POST">
+        <div class="field">
+          @csrf
+          <textarea name="description" rows="3" placeholder="Add notes here"></textarea>
+        </div>
+        <button class="tiny ui blue button" type="submit">Save Note</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <div class="ui medium header">
   Notes
 </div>
 <div class="ui relaxed divided list">
@@ -28,14 +54,8 @@
       </div>
     </div>
   @endforeach
-</div>
-<form class="ui form" action="/projects/{{ $project->id }}/notes" method="POST">
-  <div class="field">
-    @csrf
-    <textarea name="description" rows="3" placeholder="Add notes here"></textarea>
-  </div>
-  <button class="tiny ui blue button" type="submit">Save Note</button>
-</form>
+</div> -->
+
 <div class="ui clearing divider"></div>
 
 
@@ -49,19 +69,34 @@
     <div class="ui center aligned small header">
       To Do
     </div>
-    <a href="/projects/{{ $project-> id}}/task/create">
-      <div class="ui fluid card">
+    <!-- <a href="/projects/{{ $project-> id}}/task/create"> -->
+      <div class="ui fluid card"  style="background-color:#0E6EB8; color: white;">
         <div class="content">
-        <br>
-        <div class="center aligned header">
-          <p>Add a Task</p>
+        <div class="ui accordion">
+          <div class="title">
+            <div class="ui center aligned header" style="color: white;">
+              Add a new task!
+            </div>
+          </div>
+          <div class="content">
+            <form class="ui form" action="/projects/{{ $project->id }}/task" method="post">
+              @csrf
+              <div class="field">
+                <label style="color: white;">Task Description</label>
+                <input type="text" name="description" placeholder="Task Description">
+              </div>
+              <div class="field">
+                <label style="color: white;">Task Deadline</label>
+                <input type="datetime-local" name="deadline" required>
+              </div>
+              <button class="ui inverted basic button" type="submit" name="button">Save Task</button>
+
+            </form>
+          </div>
         </div>
-        <div class="center aligned meta">
-          <p>Click to add a new task</P>
         </div>
         </div>
-        </div>
-      </a>
+      <!-- </a> -->
     @foreach ($project->tasks->where('status','todo')->sortBy('deadline') as $task)
     <div class="ui fluid card">
       <div class="content">
@@ -71,6 +106,7 @@
         <div class="meta">
           <p>{{ $task->deadline }}</p>
         </div>
+
         <form class="" action="/tasks/{{ $task->id }}" method="post">
           @method('PATCH')
           @csrf
@@ -81,12 +117,40 @@
             <input type="radio" name="status" value="done" onChange="this.form.submit()" {{ $task->status == 'done' ? 'checked' : ''}} > Done
           </label>
         </form>
+
         <a class="mini ui blue button" href="/projects/{{ $project->id }}/task/{{ $task->id }}/edit">Edit Task</a>
         <form class="" action="/projects/{{ $project->id }}/task/{{ $task->id }}" style="display:inline;" method="POST">
           @method("DELETE")
           @csrf
           <button class="mini ui red button" type="submit" name="button">Delete Task</button>
         </form>
+
+        <div class="ui accordion">
+          <div class=" title">
+            <div class="ui small header">
+              <i class="dropdown icon"></i>
+              Notes
+            </div>
+          </div>
+          <div class=" content">
+            <div class="ui relaxed divided list">
+              @foreach ($task->notes as $note)
+                <div class="item">
+                  <div class="description">
+                    {{ $note->description }}
+                  </div>
+                </div>
+              @endforeach
+              <form class="ui form" action="/tasks/{{ $task->id }}/notes" method="POST">
+                <div class="field">
+                  @csrf
+                  <textarea name="description" rows="3" placeholder="Add notes here"></textarea>
+                </div>
+                <button class="tiny ui blue button" type="submit">Save Note</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     @endforeach
@@ -106,6 +170,7 @@
         <div class="meta">
           <p>{{ $task->deadline }}</p>
         </div>
+
         <form class="" action="/tasks/{{ $task->id }}" method="post">
           @method('PATCH')
           @csrf
@@ -117,31 +182,40 @@
             <input type="radio" name="status" value="done" onChange="this.form.submit()" {{ $task->status == 'done' ? 'checked' : ''}} >
             <label>Done</label>
         </form>
+
         <a class="mini ui blue button" href="/projects/{{ $project->id }}/task/{{ $task->id }}/edit">Edit Task</a>
         <form class="" action="/projects/{{ $project->id }}/task/{{ $task->id }}" style="display:inline;" method="POST">
           @method("DELETE")
           @csrf
           <button class="mini ui red button" type="submit" name="button">Delete Task</button>
         </form>
-        <div class="ui tiny header">
-          Notes
-        </div>
-        <div class="ui relaxed divided list">
-          @foreach ($project->notes as $note)
-            <div class="item">
-              <div class="description">
-                {{ $note->description }}
-              </div>
+
+        <div class="ui accordion">
+          <div class="active title">
+            <div class="ui small header">
+              <i class="dropdown icon"></i>
+              Notes
             </div>
-          @endforeach
-        </div>
-        <form class="ui form" action="/tasks/{{ $task->id }}/notes" method="POST">
-          <div class="field">
-            @csrf
-            <textarea name="description" rows="3" placeholder="Add notes here"></textarea>
           </div>
-          <button class="tiny ui blue button" type="submit">Save Note</button>
-        </form>
+          <div class="active content">
+            <div class="ui relaxed divided list">
+              @foreach ($task->notes as $note)
+                <div class="item">
+                  <div class="description">
+                    {{ $note->description }}
+                  </div>
+                </div>
+              @endforeach
+              <form class="ui form" action="/tasks/{{ $task->id }}/notes" method="POST">
+                <div class="field">
+                  @csrf
+                  <textarea name="description" rows="3" placeholder="Add notes here"></textarea>
+                </div>
+                <button class="tiny ui blue button" type="submit">Save Note</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     @endforeach
@@ -193,11 +267,39 @@
           @csrf
           <button class="mini ui red button" type="submit" name="button">Delete Task</button>
         </form>
+
+        <div class="ui accordion">
+          <div class="title">
+            <div class="ui small header">
+              <i class="dropdown icon"></i>
+              Notes
+            </div>
+          </div>
+          <div class="content">
+            <div class="ui relaxed divided list">
+              @foreach ($task->notes as $note)
+                <div class="item">
+                  <div class="description">
+                    {{ $note->description }}
+                  </div>
+                </div>
+              @endforeach
+              <form class="ui form" action="/tasks/{{ $task->id }}/notes" method="POST">
+                <div class="field">
+                  @csrf
+                  <textarea name="description" rows="3" placeholder="Add notes here"></textarea>
+                </div>
+                <button class="tiny ui blue button" type="submit">Save Note</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     @endforeach
 
   </div>
+</div>
 
 
 @endsection

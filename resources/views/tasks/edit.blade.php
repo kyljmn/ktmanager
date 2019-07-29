@@ -1,14 +1,28 @@
-<form class="" action="/projects/{{ $project->id }}/task/{{ $task->id }}" method="post">
-  @method("PATCH")
+@extends('master')
+
+@section('title')
+  - Create Tasks
+@endsection
+
+@section('content')
+
+<div class="ui huge header">
+    Edit Task
+</div>
+
+<div class="ui clearing divider"></div>
+<form class="ui form" action="/projects/{{ $project->id }}/task/{{ $task->id }}" method="post">
+  @method('PATCH')
   @csrf
-  <div>
-    <h4>Task Description</h4>
-    <input type="text" name="description" vale="{{ $task->description }}">
+  <div class="field">
+    <label>Task Description</label>
+    <input type="text" name="description" value="{{ $task->description }}">
   </div>
-  <div class="">
-    <h4>Task Deadline</h4>
+  <div class="field">
+    <label>Task Deadline</label>
     <input type="datetime-local" name="deadline" required>
   </div>
-  <button type="submit" name="button">Update Task</button>
+  <button class="ui blue button" type="submit" name="button">Save Changes</button>
 
 </form>
+@endsection
