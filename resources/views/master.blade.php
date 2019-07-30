@@ -6,15 +6,16 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/semantic.min.js') }}"></script>
+    @yield('style')
   </head>
   <body>
     <div class="ui primary  menu">
             <a class="item" href="{{ url('/') }}">
                 toDone
             </a>
-            <a class="item" href="{{ url('/dashboard')}}">
+            <!-- <a class="item" href="{{ url('/dashboard')}}">
               Dashboard
-            </a>
+            </a> -->
             <a class="item" href="{{ url('/projects')}}">
               Projects
             </a>

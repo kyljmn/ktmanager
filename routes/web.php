@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(auth()->user()){
+      return redirect('/projects');
+    } else {
+      return view('welcome');
+    }
 });
 
 Route::patch('/tasks/{task}', 'ProjectTasksController@statusChange');
