@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>toDone @yield('title')</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
     <script src="{{ asset('js/semantic.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/calendar.min.css') }}">
+    <script src="{{ asset('js/calendar.min.js') }}"></script>
     @yield('style')
   </head>
   <body>
@@ -52,6 +54,7 @@
             <script type="text/javascript">
             $('.ui.accordion').accordion();
             $('.ui.dropdown').dropdown();
+            $('#example1').calendar();
             </script>
   </body>
 </html>

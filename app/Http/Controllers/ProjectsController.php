@@ -45,6 +45,8 @@ class ProjectsController extends Controller
     {
       $project = $this->validateProject();
       $project['owner_id'] = auth()->id();
+      $deadline = date_create_from_format ('F j, Y g:i A', $request->deadline )->format('Y-m-d H:i:s');
+      $validated['deadline'] = $deadline;
       $newProject = Project::create($project);
 
 
@@ -84,7 +86,10 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->update($this->validateProject());
+        $validated = $this->validateProject();
+        $deadline = date_create_from_format ('F j, Y g:i A', request('deadline') )->format('Y-m-d H:i:s');
+        $validated['deadline'] = $deadline;
+        $project->update($validated);
         return redirect()->action(
           'ProjectsController@show', ['id'=> $project->id ]
         );

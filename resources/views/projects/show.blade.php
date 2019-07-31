@@ -8,7 +8,7 @@
 <div class="ui huge header">
   {{ $project->title }}
 </div>
-<p class="meta">Deadline: {{ $project->deadline }}</p>
+<p class="meta">Deadline: {{ date('D F j, Y g:i A', strtotime($project->deadline)) }}</p>
 <p>{{ $project->description }}</p>
 <a class="tiny ui blue button" href="/projects/{{ $project->id }}/edit"> Edit Project</a>
 <form class="" action="/projects/{{ $project->id }}" style="display:inline;" method="POST">
@@ -86,8 +86,10 @@
                 <input type="text" name="description" placeholder="Task Description">
               </div>
               <div class="field">
-                <label style="color: white;">Task Deadline</label>
-                <input type="datetime-local" name="deadline" required>
+                <div class="ui calendar" id="example1">
+                  <label style="color: white;">Task Deadline</label>
+                  <input type="text" name="deadline" placeholder="Date/Time" required>
+                </div>
               </div>
               <button class="ui inverted basic button" type="submit" name="button">Save Task</button>
 
@@ -104,7 +106,7 @@
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>{{ $task->deadline }}</p>
+          <p>Deadline: {{ date('D F j, Y g:i A', strtotime($task->deadline)) }}</p>
         </div>
 
         <form class="" action="/tasks/{{ $task->id }}" method="post">
@@ -168,7 +170,7 @@
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>{{ $task->deadline }}</p>
+          <p>Deadline: {{ date('D F j, Y g:i A', strtotime($task->deadline)) }}</p>
         </div>
 
         <form class="" action="/tasks/{{ $task->id }}" method="post">
@@ -233,7 +235,7 @@
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>{{ $task->deadline }}</p>
+          <p>Deadline: {{ date('D F j, Y g:i A', strtotime($task->deadline)) }}</p>
         </div>
         <div class="ui form">
         <form class="" action="/tasks/{{ $task->id }}" method="post">

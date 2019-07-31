@@ -25,8 +25,10 @@
              <textarea name="description" placeholder="Write something about your project here" required>{{$project->description}}</textarea>
            </div>
            <div class="field">
-             <label>Project Deadline</label>
-             <input type="datetime-local" name="deadline" value="{{$project->deadline}}" required>
+             <div class="ui calendar" id="example1">
+               <label>Project Deadline</label>
+               <input type="text" name="deadline" value="{{ date('F j, Y g:i A', strtotime($project->deadline)) }}" required>
+             </div>
            </div>
            <br><br>
            <div>

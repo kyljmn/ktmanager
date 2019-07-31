@@ -27,15 +27,17 @@
             @csrf
             <div class="field">
               <label style="color: white;">Project Title</label>
-              <input type="text" name="title" placeholder="Title">
+              <input type="text" name="title" placeholder="Title" required>
             </div>
             <div class="field">
               <label style="color: white;">Project Description</label>
-              <input type="text" name="description" placeholder="Write something about your project here">
+              <input type="text" name="description" placeholder="Write something about your project here" required>
             </div>
             <div class="field">
-              <label style="color: white;">Project Deadline</label>
-              <input type="datetime-local" name="deadline" required>
+              <div class="ui calendar" id="example1">
+                <label style="color: white;">Project Deadline</label>
+                <input type="text" name="deadline" placeholder="Date/Time" required>
+              </div>
             </div>
             <button class="ui inverted basic button" type="submit" name="button">Save Project</button>
 
@@ -66,7 +68,7 @@
                   <p>{{ $project->title }}</p>
                 </div>
                 <div class="meta">
-                  <p>{{ $project->deadline }}</p>
+                  <p>Deadline: {{ date('D F j, Y g:i A', strtotime($project->deadline)) }}</p>
                 </div>
               </div>
             </div>
