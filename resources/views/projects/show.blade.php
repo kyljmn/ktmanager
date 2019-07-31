@@ -83,7 +83,7 @@
               @csrf
               <div class="field">
                 <label style="color: white;">Task Description</label>
-                <input type="text" name="description" placeholder="Task Description">
+                <input type="text" name="description" placeholder="Task Description" required>
               </div>
               <div class="field">
                 <div class="ui calendar" id="example1">

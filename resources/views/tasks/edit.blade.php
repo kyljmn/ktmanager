@@ -13,12 +13,12 @@
     </div>
 
     <div class="ui clearing divider"></div>
-      <form class="ui form" action="/projects/{{ $project->id }}/task/{{ $task->id }}" method="post">
+      <form class="ui form" action="/projects/{{ $project->id }}/task/{{ $task->id }}" method="post" required>
         @method('PATCH')
         @csrf
         <div class="field">
           <label>Task Description</label>
-          <input type="text" name="description" value="{{ $task->description }}">
+          <input type="text" name="description" value="{{ $task->description }}" required>
         </div>
         <div class="field">
           <div class="ui calendar" id="example1">
