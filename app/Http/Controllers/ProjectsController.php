@@ -23,7 +23,7 @@ class ProjectsController extends Controller
     public function index()
     {
       $projects = auth()->user()->projects;
-      dd(Carbon::now())
+      dd(Carbon::now());
       return view('projects.index', ['projects'=> $projects]);
     }
 
