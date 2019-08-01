@@ -45,7 +45,7 @@ class ProjectsController extends Controller
     {
       $project = $this->validateProject();
       $project['owner_id'] = auth()->id();
-      $deadline = date_create_from_format ('F j, Y g:i A', $request->deadline, timezone_open(auth()->user()->timezone))->setTimezone(timezone_open('UTC'));
+      $deadline = date_create_from_format('F j, Y g:i A', $request->deadline, timezone_open(auth()->user()->timezone))->setTimezone(timezone_open('UTC'));
       $validated['deadline'] = $deadline;
       $newProject = Project::create($project);
 
@@ -87,7 +87,7 @@ class ProjectsController extends Controller
     public function update(Request $request, Project $project)
     {
         $validated = $this->validateProject();
-        $deadline = date_create_from_format ('F j, Y g:i A', $request->deadline, timezone_open(auth()->user()->timezone))->setTimezone(timezone_open('UTC'));
+        $deadline = date_create_from_format('F j, Y g:i A', $request->deadline, timezone_open(auth()->user()->timezone))->setTimezone(timezone_open('UTC'));
         $validated['deadline'] = $deadline;
         $project->update($validated);
         return redirect()->action(
