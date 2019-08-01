@@ -48,7 +48,7 @@ class ProjectTasksController extends Controller
     {
         $newTask = $this->validateTask();
         $newTask['project_id'] = $project->id;
-        $newTask['deadline']= date_create_from_format('F j, Y g:i A', $request->deadline, timezone_open(auth()->user()->timezone))->setTimezone(timezone_open('UTC'));
+        $newTask['deadline']= Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
         Task::create($newTask);
 
         return redirect()->action(
@@ -91,7 +91,7 @@ class ProjectTasksController extends Controller
     public function update(Request $request, Project $project, Task $task)
     {
         $validated = $this->validateTask());
-        $validated['deadline'] = date_create_from_format('F j, Y g:i A', $request->deadline, timezone_open(auth()->user()->timezone))->setTimezone(timezone_open('UTC'));
+        $validated['deadline'] = Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
         return redirect()->action(
             'ProjectsController@show', ['id'=> $project->id]
           );
