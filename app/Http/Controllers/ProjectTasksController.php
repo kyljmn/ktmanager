@@ -90,7 +90,7 @@ class ProjectTasksController extends Controller
      */
     public function update(Request $request, Project $project, Task $task)
     {
-        $validated = $this->validateTask());
+        $validated = $this->validateTask();
         $validated['deadline'] = Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
         return redirect()->action(
             'ProjectsController@show', ['id'=> $project->id]
