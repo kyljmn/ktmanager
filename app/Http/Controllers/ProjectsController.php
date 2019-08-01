@@ -46,7 +46,7 @@ class ProjectsController extends Controller
     {
       $project = $this->validateProject();
       $project['owner_id'] = auth()->id();
-      $validated['deadline'] = Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
+      $project['deadline'] = Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
       $newProject = Project::create($project);
 
 
@@ -63,7 +63,6 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
-        dd($project->deadline);
         return view('projects.show', ['project' => $project]);
     }
 
