@@ -23,7 +23,6 @@ class ProjectsController extends Controller
     public function index()
     {
       $projects = auth()->user()->projects;
-      dd(Carbon::now());
       return view('projects.index', ['projects'=> $projects]);
     }
 
@@ -65,6 +64,7 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
+        dd($project->deadline);
         return view('projects.show', ['project' => $project]);
     }
 
