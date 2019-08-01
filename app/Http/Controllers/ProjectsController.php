@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use Carbon\Carbon;
 use App\Task;
 use App\Note;
 use App\User;
@@ -22,6 +23,7 @@ class ProjectsController extends Controller
     public function index()
     {
       $projects = auth()->user()->projects;
+      dd(Carbon::now())
       return view('projects.index', ['projects'=> $projects]);
     }
 
