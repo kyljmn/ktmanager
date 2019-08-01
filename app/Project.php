@@ -9,6 +9,7 @@ class Project extends Model
   protected $fillable = [
       'owner_id', 'title', 'description', 'deadline',
   ];
+
   public function owner()
   {
     return $this->belongsTo('App\User');
@@ -22,5 +23,5 @@ class Project extends Model
   {
     return $this->morphMany('App\Note', 'noteable');
   }
-  
+
 }

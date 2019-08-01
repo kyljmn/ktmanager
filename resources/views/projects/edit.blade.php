@@ -27,7 +27,7 @@
            <div class="field">
              <div class="ui calendar" id="example1">
                <label>Project Deadline</label>
-               <input type="text" name="deadline" value="{{ date('F j, Y g:i A', strtotime($project->deadline)) }}" required>
+               <input type="text" name="deadline" value="{{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($project->deadline)->timezone(auth()->user()->timezone))) }}" required>
              </div>
            </div>
            <br><br>

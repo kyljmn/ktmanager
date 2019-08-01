@@ -23,7 +23,7 @@
         <div class="field">
           <div class="ui calendar" id="example1">
             <label>Task Deadline</label>
-            <input type="text" name="deadline" value="{{ date('F j, Y g:i A', strtotime($task->deadline)) }}" required>
+            <input type="text" name="deadline" value="{{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($task->deadline)->timezone(auth()->user()->timezone))) }}" required>
           </div>
         </div>
         <button class="fluid ui blue button" type="submit" name="button">Save Changes</button>

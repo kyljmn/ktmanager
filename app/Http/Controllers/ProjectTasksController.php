@@ -47,6 +47,7 @@ class ProjectTasksController extends Controller
     {
         $newTask = $this->validateTask();
         $newTask['project_id'] = $project->id;
+        $newTask['deadline']=$deadline = date_create_from_format ('F j, Y g:i A', $request->deadline, timezone_open(auth()->user()->timezone))->setTimezone(timezone_open('UTC'));
         Task::create($newTask);
 
         return redirect()->action(
@@ -88,7 +89,8 @@ class ProjectTasksController extends Controller
      */
     public function update(Request $request, Project $project, Task $task)
     {
-        $task->update($this->validateTask());
+        $validated = $this->validateTask());
+        $validated['deadline'] = date_create_from_format('F j, Y g:i A', $request->deadline, timezone_open(auth()->user()->timezone))->setTimezone(timezone_open('UTC'));
         return redirect()->action(
             'ProjectsController@show', ['id'=> $project->id]
           );

@@ -8,7 +8,7 @@
 <div class="ui huge header">
   {{ $project->title }}
 </div>
-<p class="meta">Deadline: {{ date('D F j, Y g:i A', strtotime($project->deadline)) }}</p>
+<p class="meta">Deadline: {{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($project->deadline)->timezone(auth()->user()->timezone))) }}</p>
 <p>{{ $project->description }}</p>
 <a class="tiny ui blue button" href="/projects/{{ $project->id }}/edit"> Edit Project</a>
 <form class="" action="/projects/{{ $project->id }}" style="display:inline;" method="POST">
@@ -106,7 +106,7 @@
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>Deadline: {{ date('D F j, Y g:i A', strtotime($task->deadline)) }}</p>
+          <p>Deadline: {{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($task->deadline)->timezone(auth()->user()->timezone))) }}</p>
         </div>
 
         <form class="" action="/tasks/{{ $task->id }}" method="post">
@@ -170,7 +170,7 @@
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>Deadline: {{ date('D F j, Y g:i A', strtotime($task->deadline)) }}</p>
+          <p>Deadline: {{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($task->deadline)->timezone(auth()->user()->timezone))) }}</p>
         </div>
 
         <form class="" action="/tasks/{{ $task->id }}" method="post">
@@ -235,7 +235,7 @@
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>Deadline: {{ date('D F j, Y g:i A', strtotime($task->deadline)) }}</p>
+          <p>Deadline: {{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($task->deadline)->timezone(auth()->user()->timezone))) }}</p>
         </div>
         <div class="ui form">
         <form class="" action="/tasks/{{ $task->id }}" method="post">

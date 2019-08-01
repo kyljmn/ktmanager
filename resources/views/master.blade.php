@@ -55,6 +55,7 @@
             $('.ui.accordion').accordion();
             $('.ui.dropdown').dropdown();
             $('#example1').calendar();
+            $('#tz_pick').dropdown();
             </script>
   </body>
 </html>

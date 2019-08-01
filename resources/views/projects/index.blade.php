@@ -68,7 +68,7 @@
                   <p>{{ $project->title }}</p>
                 </div>
                 <div class="meta">
-                  <p>Deadline: {{ date('D F j, Y g:i A', strtotime($project->deadline)) }}</p>
+                  <p>Deadline: {{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($project->deadline)->timezone(auth()->user()->timezone))) }}</p>
                 </div>
               </div>
             </div>
