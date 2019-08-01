@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->bigInteger('owner_id')->unsigned();
             $table->string('title');
             $table->text('description');
-            $table->timestamp('deadline');
+            $table->dateTime('deadline');
             $table->boolean('completed')->default(false);
             $table->timestamps();
 
