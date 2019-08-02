@@ -67,7 +67,7 @@ Dashboard - all your tasks
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>Project: {{task->project->title}}</p>
+          <p>Project: {{ $task->project->title}}</p>
         </div>
         <div class="meta">
           <p>Deadline: {{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($task->deadline)->timezone(auth()->user()->timezone))) }}</p>
@@ -134,7 +134,7 @@ Dashboard - all your tasks
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>Project: {{task->project->title}}</p>
+          <p>Project: {{ $task->project->title}}</p>
         </div>
         <div class="meta">
           <p>Deadline: {{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($task->deadline)->timezone(auth()->user()->timezone))) }}</p>
@@ -202,7 +202,7 @@ Dashboard - all your tasks
           <p>{{ $task->description }}</p>
         </div>
         <div class="meta">
-          <p>Project: {{task->project->title}}</p>
+          <p>Project: {{ $task->project->title}}</p>
         </div>
         <div class="meta">
           <p>Deadline: {{ date('D F j, Y g:i A', strtotime(\Carbon\Carbon::parse($task->deadline)->timezone(auth()->user()->timezone))) }}</p>
