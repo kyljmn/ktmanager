@@ -117,9 +117,7 @@ class ProjectTasksController extends Controller
 
     public function fromdashboard(Request $request)
     {
-      return redirect()->action(
-        'ProjectTasksController@store', ['id'=> request()->project_id ]
-      )->withInput($request->except('project_id'));
+      return Route::post('/projects/{project}/task', ['id'=>request()->project_id],'ProjectTasksController@fromdashboard')->withInput(request()->except('project_id'));
     }
 
     public function statusChange(Request $request, Task $task)
