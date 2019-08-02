@@ -15,6 +15,9 @@
             <a class="item" href="{{ url('/') }}">
                 toDone
             </a>
+            <a class="item" href="{{ url('/dashboard') }}">
+              Dashboard
+            </a>
             <a class="item" href="{{ url('/projects')}}">
               Projects
             </a>
