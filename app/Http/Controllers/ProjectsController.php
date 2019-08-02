@@ -115,7 +115,7 @@ class ProjectsController extends Controller
         return redirect('/projects');
     }
 
-    public function tasksview()
+    public function dashboard()
     {
       $tasks = collect([]);
       foreach(auth()->user()->projects as $project){

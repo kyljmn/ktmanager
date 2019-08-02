@@ -46,8 +46,8 @@ class ProjectTasksController extends Controller
      */
     public function store(Request $request, Project $project)
     {
-        $newTask['project_id'] = $project->id;
         $newTask = $this->validateTask();
+        $newTask['project_id'] = $project->id;
         $newTask['deadline']= Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
         Task::create($newTask);
 
@@ -113,6 +113,13 @@ class ProjectTasksController extends Controller
         return redirect()->action(
             'ProjectsController@show', ['id'=> $project->id]
           );
+    }
+
+    public function fromdashboard(Request $request)
+    {
+      return redirect()->withInput($request->except('project_id'))->action(
+        'ProjectsController@show', ['id'=> request()->project_id ]
+      );
     }
 
     public function statusChange(Request $request, Task $task)

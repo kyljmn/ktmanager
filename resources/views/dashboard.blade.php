@@ -27,7 +27,7 @@ Dashboard - all your tasks
             </div>
           </div>
           <div class="content">
-            <form class="ui form" action="/projects/{{ $project->id }}/task" method="post">
+            <form class="ui form" action="/fromdashboard" method="post">
               @csrf
               <div class="field">
                 <label style="color: white;">Project</label>
