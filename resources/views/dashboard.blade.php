@@ -31,7 +31,7 @@ Dashboard - all your tasks
               <div class="field">
                 <label style="color: white;">Project</label>
                 <div class="ui dropdown">
-                  <input type="hidden" name="project_id" id="project_id" required>
+                  <input type="hidden" name="project_id" id="project_id" style="color: white;" required>
                   <i class="dropdown icon"></i>
                   <div class="default text">Select Project</div>
                   <div class="menu">
