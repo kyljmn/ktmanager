@@ -114,6 +114,18 @@ class ProjectsController extends Controller
         $project->delete();
         return redirect('/projects');
     }
+
+    public function tasksview()
+    {
+      $tasks = collect([]);
+      foreach(auth()->user()->projects as $project){
+        foreach($project->tasks as $task){
+          $tasks->push($task);
+        }
+      }
+      return view('dashboard', ['tasks'=> $tasks]);
+    }
+
     protected function validateProject()
     {
       return request()->validate([

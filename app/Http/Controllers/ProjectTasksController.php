@@ -46,8 +46,8 @@ class ProjectTasksController extends Controller
      */
     public function store(Request $request, Project $project)
     {
-        $newTask = $this->validateTask();
         $newTask['project_id'] = $project->id;
+        $newTask = $this->validateTask();
         $newTask['deadline']= Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
         Task::create($newTask);
 

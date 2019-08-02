@@ -29,4 +29,6 @@ Route::post('/projects/{project}/notes', 'NotesController@fromprojects');
 
 Route::post('/tasks/{task}/notes', 'NotesController@fromtasks');
 
+Route::get('/dashboard','ProjectsController@tasksview');
+
 Auth::routes();
