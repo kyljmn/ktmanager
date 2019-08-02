@@ -13,7 +13,7 @@ class ProjectTasksController extends Controller
 {
   public function __construct() {
     $this->middleware('auth');
-    $this->middleware('can:update,task', ['only'=>['edit', 'update', 'destroy', 'statusChange']]);
+    $this->middleware('can:update,task', ['only'=>['edit', 'update', 'destroy', 'statusChange','fromdashboard']]);
   }
     /**
      * Display a listing of the resource.
