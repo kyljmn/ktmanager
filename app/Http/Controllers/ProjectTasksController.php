@@ -90,9 +90,7 @@ class ProjectTasksController extends Controller
     {
         $validated = $this->validateTask();
         $validated['deadline'] = Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
-        return redirect()->action(
-            'ProjectsController@show', ['id'=> $project->id]
-          );
+        return back();
     }
 
     /**
@@ -108,9 +106,7 @@ class ProjectTasksController extends Controller
           $note->delete();
         }
         $task->delete();
-        return redirect()->action(
-            'ProjectsController@show', ['id'=> $project->id]
-          );
+        return back();
     }
 
     public function statusChange(Request $request, Task $task)
