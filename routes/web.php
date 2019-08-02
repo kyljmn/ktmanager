@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     if(auth()->user()){
-      return redirect('/projects');
+      return redirect('/dashboard');
     } else {
       return view('welcome');
     }
