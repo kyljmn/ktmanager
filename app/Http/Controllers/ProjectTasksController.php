@@ -118,7 +118,7 @@ class ProjectTasksController extends Controller
     public function fromdashboard(Request $request)
     {
       return redirect()->action(
-        'ProjectsController@show', ['id'=> request()->project_id ]
+        'ProjectsController@store', ['id'=> request()->project_id ]
       )->withInput($request->except('project_id'));
     }
 
