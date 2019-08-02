@@ -17,7 +17,6 @@ Dashboard - all your tasks
     <div class="ui center aligned small header">
       To Do
     </div>
-    <!-- <a href="/projects/{{ $project-> id}}/task/create"> -->
       <div class="ui fluid card"  style="background-color:#0E6EB8; color: white;">
         <div class="content">
         <div class="ui accordion">
