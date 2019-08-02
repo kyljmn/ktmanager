@@ -13,7 +13,7 @@ class ProjectsController extends Controller
 {
     public function __construct() {
       $this->middleware('auth');
-      $this->middleware('can:update,project', ['except' => ['index','create','store']]);
+      $this->middleware('can:update,project', ['except' => ['index','create','store','dashboard']]);
     }
     /**
      * Display a listing of the resource.
