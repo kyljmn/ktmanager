@@ -13,7 +13,7 @@ class ProjectsController extends Controller
 {
     public function __construct() {
       $this->middleware('auth');
-      $this->middleware('can:update,project', ['except' => ['index','create','store','dashboard']]);
+      $this->middleware('can:update,project', ['except' => ['index','create','store']]);
     }
     /**
      * Display a listing of the resource.
@@ -113,17 +113,6 @@ class ProjectsController extends Controller
         }
         $project->delete();
         return redirect('/projects');
-    }
-
-    public function dashboard()
-    {
-      $tasks = collect([]);
-      foreach(auth()->user()->projects as $project){
-        foreach($project->tasks as $task){
-          $tasks->push($task);
-        }
-      }
-      return view('dashboard', ['tasks'=> $tasks]);
     }
 
     protected function validateProject()

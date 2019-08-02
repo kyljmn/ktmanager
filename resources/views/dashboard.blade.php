@@ -26,12 +26,12 @@ Dashboard - all your tasks
             </div>
           </div>
           <div class="content">
-            <form class="ui form" action="/fromdashboard" method="post">
+            <form class="ui form" action="" name="savetask" id="savetask" method="post">
               @csrf
               <div class="field">
                 <label style="color: white;">Project</label>
                 <div class="ui dropdown">
-                  <input type="hidden" name="project_id" required>
+                  <input type="hidden" name="project_id" id="project_id" required>
                   <i class="dropdown icon"></i>
                   <div class="default text">Select Project</div>
                   <div class="menu">
@@ -271,5 +271,15 @@ Dashboard - all your tasks
 
   </div>
 </div>
+
+<script>
+  // Shorthand for $(document).ready();
+  $(function() {
+   $('#savetask').submit(function(){
+     var project_id = $('#project_id').val();
+     $(this).attr('action', '/projects/' + project_id + '/task');
+   });
+  });
+ </script>
 
 @endsection
