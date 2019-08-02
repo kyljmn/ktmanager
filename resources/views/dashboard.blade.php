@@ -36,7 +36,7 @@ Dashboard - all your tasks
                   <div class="default text">Select Project</div>
                   <div class="menu">
                     @foreach(auth()->user()->projects as $project)
-                      <div class="item" data-value="{{$project->id}}">$project->title</div>
+                      <div class="item" data-value="{{$project->id}}">{{$project->title}}</div>
                     @endforeach
                   </div>
                 </div>
