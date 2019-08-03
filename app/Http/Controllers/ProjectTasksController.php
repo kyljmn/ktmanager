@@ -74,7 +74,7 @@ class ProjectTasksController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project, Task $task)
+    public function edit(Project $project, Task $task, Request $request)
     {
       Session::flash('url', $request->server('HTTP_REFERER'));
       return view('tasks.edit', ['task' => $task, 'project' => $project]);
