@@ -91,7 +91,7 @@ class ProjectTasksController extends Controller
         $validated = $this->validateTask();
         $validated['deadline'] = Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
         $task->update($validated);
-        Redirect::to($request->request->get('http_referrer'));
+        return redirect($request->request->get('http_referrer'));
     }
 
     /**
