@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Note;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProjectTasksController extends Controller
 {
@@ -75,6 +76,7 @@ class ProjectTasksController extends Controller
      */
     public function edit(Project $project, Task $task)
     {
+      Session::flash('url', $request->server('HTTP_REFERER'));
       return view('tasks.edit', ['task' => $task, 'project' => $project]);
     }
 
@@ -91,9 +93,7 @@ class ProjectTasksController extends Controller
         $validated = $this->validateTask();
         $validated['deadline'] = Carbon::createFromFormat('F j, Y g:i A', $request->deadline, auth()->user()->timezone)->timezone('UTC');
         $task->update($validated);
-        return redirect()->action(
-          'ProjectsController@show', ['id'=> $project->id ]
-        );
+        return redirect(Session::get('url'));
     }
 
     /**

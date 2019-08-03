@@ -8,6 +8,7 @@ use App\Task;
 use App\Note;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProjectsController extends Controller
 {
