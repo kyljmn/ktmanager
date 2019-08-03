@@ -30,7 +30,7 @@ Dashboard - all your tasks
               @csrf
               <div class="field" style="color: white;">
                 <label style="color: white;">Project</label>
-                <div class="ui dropdown" style="color: white;">
+                <div class="fluid ui dropdown" style="background-color: white;">
                   <input type="hidden" name="project_id" id="project_id" required>
                   <i class="dropdown icon"></i>
                   <div class="default text">Select Project</div>
