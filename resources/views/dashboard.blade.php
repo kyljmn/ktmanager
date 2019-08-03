@@ -31,9 +31,7 @@ Dashboard - all your tasks
               <div class="field">
                 <label style="color: white;">Project</label>
                 <div class="ui dropdown" style="color: white;">
-                  <input type="hidden" name="project_id" id="project_id" required>
-                  <i class="dropdown icon"></i>
-                  <div class="default text">Select Project</div>
+                  <input name="project_id" id="project_id" placeholder="Select project" required>
                   <div class="menu">
                     @foreach(auth()->user()->projects as $project)
                       <div class="item" data-value="{{$project->id}}">{{$project->title}}</div>
